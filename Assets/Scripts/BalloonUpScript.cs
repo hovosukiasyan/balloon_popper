@@ -98,7 +98,7 @@ public class BalloonUpScript : MonoBehaviour
     }
     public void IncreaseSpeed(float increaseAmount)
     {
-        float maxSpeed= 4.0f;
+        float maxSpeed= 5.0f;
         if(speed<=maxSpeed)
         {
         speed = speed +increaseAmount;
