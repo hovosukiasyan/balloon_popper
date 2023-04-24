@@ -28,15 +28,19 @@ public class BalloonSpawner : MonoBehaviour
         // Get the screen width in world units
         float screenWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x * 2f;
         Debug.Log("scrwd" +screenWidth);
+        float fifteenPercent = (screenWidth*15)/100;
+        orignal.scaleCalculator(screenWidth);
+
+
+
+
+
+
         // Get the current speed of the original balloon
         float balloonSpeed = orignal.speed;
-        //concatination for balloon for more correct adjusting
-        float fifteenPercent = (screenWidth*15)/100; 
 
 
-
-
-
+        
         for (int i = 0; i < numberOfBalloons; i++)
         {
             // Adjust the x-coordinate of the random position to spawn balloons along the width of the screen
@@ -51,7 +55,6 @@ public class BalloonSpawner : MonoBehaviour
                         
         }
     }
-
     
 }
 
