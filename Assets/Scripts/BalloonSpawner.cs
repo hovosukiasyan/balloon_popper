@@ -25,17 +25,22 @@ public class BalloonSpawner : MonoBehaviour
 
     void SpawnBalloons()
     {
-        // Get the length of the object this script is attached to
-        float objectLength = transform.localScale.x;
+        // Get the screen width in world units
+        float screenWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x * 2f;
+        Debug.Log("scrwd" +screenWidth);
         // Get the current speed of the original balloon
+        float balloonSpeed = orignal.speed;
+        //concatination for balloon for more correct adjusting
+        float fifteenPercent = (screenWidth*15)/100; 
+
 
 
 
 
         for (int i = 0; i < numberOfBalloons; i++)
         {
-            // Adjust the x-coordinate of the random position to spawn balloons along the length of the object
-            Vector3 randomPosition = new Vector3(Random.Range(-objectLength/2f, objectLength/2f), -8f, 0);
+            // Adjust the x-coordinate of the random position to spawn balloons along the width of the screen
+            Vector3 randomPosition = new Vector3(Random.Range(-screenWidth/2f+fifteenPercent, screenWidth/2f-fifteenPercent), -8f, 0);
             GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity); //creating the clone of the balloon
             BalloonUpScript balloonScript = balloon.GetComponent<BalloonUpScript>(); 
             balloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
