@@ -15,6 +15,8 @@ public class BalloonSpawner : MonoBehaviour
     public int numberOfBalloons;
     public float spawnInterval = 0.7f; // the time interval between spawns in seconds
     public float startTime = 0f; // the time in seco
+    public TextMeshProUGUI bestRecordText;
+
 
         void Start()
     {
@@ -50,6 +52,7 @@ public class BalloonSpawner : MonoBehaviour
             balloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
             balloonScript.scoreText = scoreText;
             balloonScript.speed = orignal.speed;
+            balloonScript.bestRecordText = bestRecordText;
 
             
                         

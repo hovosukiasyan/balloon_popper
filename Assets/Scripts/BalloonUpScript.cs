@@ -17,7 +17,9 @@ public class BalloonUpScript : MonoBehaviour
     private float distanceToMove; // The distance the object needs to move
     private bool isClicked = false; // A flag to indicate if the object has been clicked
     private static int score=0; // counter of the number of balloons popped
-     
+    public static int bestRecord = 0;   // variable to store the best record
+    public TextMeshProUGUI bestRecordText; 
+
     public Animator animator;
 
 
@@ -28,7 +30,8 @@ public class BalloonUpScript : MonoBehaviour
         // Calculate the distance the object needs to move
         distanceToMove = transform.position.y + speed * timeToMove;
         transform.localScale = new Vector3(roundedScale(), roundedScale(), 1);
-         
+        bestRecord = PlayerPrefs.GetInt("BestRecord", 0);
+        bestRecordText.text = "Best Record: " + bestRecord.ToString();
     }
 
     void Update()
@@ -97,6 +100,14 @@ public class BalloonUpScript : MonoBehaviour
         Destroy(gameObject);
         score=score+1;  
         scoreText.text = "Score: " + score.ToString();
+
+        if (score > bestRecord)
+        {
+            // update the best record and save it to PlayerPrefs
+            bestRecord = score;
+            PlayerPrefs.SetInt("BestRecord", bestRecord);
+            bestRecordText.text = "Best Record: " + bestRecord.ToString();
+        }
         
     }
 
