@@ -44,7 +44,7 @@ public class RedBalloonSpawner : MonoBehaviour
         for (int i = 0; i < numberOfBalloons; i++)
         {
             // Adjust the x-coordinate of the random position to spawn balloons along the width of the screen
-            Vector3 randomPosition = new Vector3(Random.Range(-screenWidth/2f+fifteenPercent, screenWidth/2f-fifteenPercent), -8f, 0);
+            Vector3 randomPosition = new Vector3(Random.Range(-screenWidth/2f+fifteenPercent, screenWidth/2f-fifteenPercent), -10f, 0);
             GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity); //creating the clone of the balloon
             RedBalloonUpScript redBalloonScript = balloon.GetComponent<RedBalloonUpScript>(); 
             redBalloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
