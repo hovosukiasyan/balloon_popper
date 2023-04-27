@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class BalloonSpawner : MonoBehaviour
+public class RedBalloonSpawner : MonoBehaviour
 {
     public GameObject balloonPrefab;
-    public BalloonUpScript original;
+    public RedBalloonUpScript original;
     public float speed;
 
     public GameOverScreen gameOverScreen;
     
-    public TextMeshProUGUI scoreText; // text which shows the score
     public int numberOfBalloons;
     public float spawnInterval = 0.7f; // the time interval between spawns in seconds
     public float startTime = 0f; // the time in seco
-    public TextMeshProUGUI bestRecordText;
 
 
         void Start()
@@ -48,11 +46,9 @@ public class BalloonSpawner : MonoBehaviour
             // Adjust the x-coordinate of the random position to spawn balloons along the width of the screen
             Vector3 randomPosition = new Vector3(Random.Range(-screenWidth/2f+fifteenPercent, screenWidth/2f-fifteenPercent), -8f, 0);
             GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity); //creating the clone of the balloon
-            BalloonUpScript balloonScript = balloon.GetComponent<BalloonUpScript>(); 
-            balloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
-            balloonScript.scoreText = scoreText;
-            balloonScript.speed = original.speed;
-            balloonScript.bestRecordText = bestRecordText;
+            RedBalloonUpScript redBalloonScript = balloon.GetComponent<RedBalloonUpScript>(); 
+            redBalloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
+            redBalloonScript.speed = original.speed;
 
             
                         
