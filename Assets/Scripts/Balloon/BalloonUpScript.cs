@@ -11,13 +11,14 @@ public class BalloonUpScript : MonoBehaviour
     public float speed = 10.0f; // The speed at which the object will move
     public float timeToMove = 2.0f; // The amount of time it will take for the object to move
     public float maxHeight = -100f; // the maximum height before game over
-    public TextMeshProUGUI scoreText; // text which shows the score
+
     private bool isGameOver = false; // flag to prevent game over message from appearing multiple times
     private float distanceToMove; // The distance the object needs to move
     private bool isClicked = false; // A flag to indicate if the object has been clicked
-    private static int score=0; // counter of the number of balloons popped
+
     public static int bestRecord = 0;   // variable to store the best record
     public TextMeshProUGUI bestRecordText; 
+    public ScoreManager scoreManager; //everything connected with score,i.e. resetting, incremetning,getting...
     public Animator animator;
 
     void Start()
@@ -28,6 +29,7 @@ public class BalloonUpScript : MonoBehaviour
         transform.localScale = new Vector3(roundedScale(), roundedScale(), 1);
         bestRecord = PlayerPrefs.GetInt("BestRecord", 0);
         bestRecordText.text = "Best Record: " + bestRecord.ToString();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     void Update()
@@ -89,13 +91,12 @@ public class BalloonUpScript : MonoBehaviour
         yield return new WaitForSeconds(time);
         // Delete the object
         Destroy(gameObject);
-        score=score+1;  
-        scoreText.text = "Score: " + score.ToString();
-
-        if (score > bestRecord)
+        scoreManager.IncrementScore(); //equivalent to score++
+ 
+        if (scoreManager.GetScore() > bestRecord)
         {
             // update the best record and save it to PlayerPrefs
-            bestRecord = score;
+            bestRecord = scoreManager.GetScore();
             PlayerPrefs.SetInt("BestRecord", bestRecord);
             bestRecordText.text = "Best Record: " + bestRecord.ToString();
         }
@@ -110,14 +111,11 @@ public class BalloonUpScript : MonoBehaviour
         if (!isGameOver && transform.position.y > maxHeight -10f)
             {
                 isGameOver = true;
-                ResetScore(); //reseting the score to 0 after we lose
+                scoreManager.ResetScore(); //reseting the score to 0 after we lose
             }
         }   
     }
-    void ResetScore() //just a method to reset the score to 0
-    {
-        score = 0;
-    }
+
     public void IncreaseSpeed(float increaseAmount)
     {
         float maxSpeed= 5.0f;

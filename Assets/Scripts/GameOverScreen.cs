@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public Text gameOverText;
 
     public void Setup()
     {

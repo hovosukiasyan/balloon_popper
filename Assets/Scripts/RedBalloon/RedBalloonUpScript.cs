@@ -85,25 +85,6 @@ public class RedBalloonUpScript : MonoBehaviour
         return scaleCalculator(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x * 2f);
     }
 
-
-
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    // if (other.CompareTag("Ceiling"))
-    //     {
-    //     if (!isGameOver && transform.position.y > maxHeight -10f)
-    //         {
-    //             Debug.Log("Game over!");
-    //             isGameOver = true;
-    //             ResetScore(); //reseting the score to 0 after we lose
-    //         }
-    //     }   
-    // }
-
-    // void ResetScore() //just a method to reset the score to 0
-    // {
-    //     score = 0;
-    // }
     public void IncreaseSpeed(float increaseAmount)
     {
         float maxSpeed= 5.0f;
