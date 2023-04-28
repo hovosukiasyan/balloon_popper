@@ -7,7 +7,6 @@ public class RedBalloonAccelerationScript : MonoBehaviour
 private RedBalloonUpScript redBalloonScript; // Reference to BalloonUpScript
     private float timer = 0.0f;
     public float interval = 5.0f; // The interval at which to increase the speed
-    
     public float increaseAmount = 0.020f; // The amount by which to increase the speed
 
 

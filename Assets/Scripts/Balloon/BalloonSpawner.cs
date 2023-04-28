@@ -18,7 +18,7 @@ public class BalloonSpawner : MonoBehaviour
     public TextMeshProUGUI bestRecordText;
 
 
-        void Start()
+    void Start()
     {
         // Start invoking the SpawnBalloons() method at the specified time interval
         InvokeRepeating("SpawnBalloons", startTime, spawnInterval);
@@ -29,19 +29,10 @@ public class BalloonSpawner : MonoBehaviour
     {
         // Get the screen width in world units
         float screenWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x * 2f;
-        Debug.Log("scrwd" +screenWidth);
         float fifteenPercent = (screenWidth*15)/100;
         original.scaleCalculator(screenWidth);
-
-
-
-
-
-
         // Get the current speed of the original balloon
         float balloonSpeed = original.speed;
-
-
         
         for (int i = 0; i < numberOfBalloons; i++)
         {
@@ -52,10 +43,7 @@ public class BalloonSpawner : MonoBehaviour
             balloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
             balloonScript.scoreText = scoreText;
             balloonScript.speed = original.speed;
-            balloonScript.bestRecordText = bestRecordText;
-
-            
-                        
+            balloonScript.bestRecordText = bestRecordText;            
         }
     }
     

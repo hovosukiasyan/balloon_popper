@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1620771935}
+    - target: {fileID: 3998039085590960152, guid: 25ce3b67a71724867b4a14c0eb363c34, type: 3}
+      propertyPath: redBalloonUpScript
+      value: 
+      objectReference: {fileID: 599071090}
     - target: {fileID: 3998039085590960156, guid: 25ce3b67a71724867b4a14c0eb363c34, type: 3}
       propertyPath: m_RootOrder
       value: 2
