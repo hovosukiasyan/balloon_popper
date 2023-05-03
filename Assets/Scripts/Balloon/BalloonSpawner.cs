@@ -41,7 +41,6 @@ public class BalloonSpawner : MonoBehaviour
             GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity); //creating the clone of the balloon
             BalloonUpScript balloonScript = balloon.GetComponent<BalloonUpScript>(); 
             balloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
-            // balloonScript.scoreText = scoreText;
             balloonScript.speed = original.speed;
             balloonScript.bestRecordText = bestRecordText;            
         }
