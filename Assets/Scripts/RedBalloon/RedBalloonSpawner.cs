@@ -26,7 +26,7 @@ public class RedBalloonSpawner : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(screenHeigth);
+
         // Check if any balloons have reached the destroy height and destroy them
         for (int i = 0; i < redBalloons.Count; i++)
         {
@@ -63,7 +63,7 @@ public class RedBalloonSpawner : MonoBehaviour
             redBalloonScript.gameOverScreen = gameOverScreen; //getting the gameOverScreen reference for the clone
             redBalloonScript.speed = original.speed;      
             // Check if the balloon has reached the desired height, and destroy it if it has
-            Debug.Log(balloon.transform.position.y );
+            // Debug.Log(balloon.transform.position.y );
               
         }
         
